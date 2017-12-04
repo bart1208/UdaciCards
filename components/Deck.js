@@ -8,7 +8,7 @@ class Deck extends Component {
     return (
       <View style={styles.container}>
         <Text style={[styles.title]}>{title}</Text>
-        <Text style={[styles.count]}>{questions.length}cards</Text>
+        <Text style={[styles.count]}>{questions.length} cards</Text>
       </View>
     )
   }

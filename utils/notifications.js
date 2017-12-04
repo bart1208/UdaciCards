@@ -10,19 +10,17 @@ export function clearLocalNotification () {
     .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
-function createNotification () {
-  return {
-    title: 'Lets Quitz',
-    body: "Reminder to learn!",
-    ios: {
-      sound: true,
-    },
-    android: {
-      sound: true,
-      vibrate: true,
-    }
+const createNotification = () => ({
+  title: 'Lets Quitz',
+  body: "Reminder to learn!",
+  ios: {
+    sound: true,
+  },
+  android: {
+    sound: true,
+    vibrate: true,
   }
-}
+})
 
 export function setNotification () {
   AsyncStorage.getItem(NOTIFICATION_KEY)
@@ -33,7 +31,7 @@ export function setNotification () {
           .then(({ status }) => {
             if (status === 'granted') {
               Notifications.cancelAllScheduledNotificationsAsync()
-              
+
               let tomorrow = new Date()
               tomorrow.setDate(tomorrow.getDate() + 1)
               tomorrow.setHours(16)

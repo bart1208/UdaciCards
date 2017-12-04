@@ -15,12 +15,14 @@ import { addCard } from '../actions';
 class AddCard extends Component {
 
   submit = () => {
-    const { question, answer } = this.state;
-    const { addCard, deck, goBack } = this.props;
-    if (question && answer) {
-      addCard(deck.title, {question, answer});
-      addCardToDeck(deck.title, {question, answer});
-      goBack();
+    if (this.state != null) {
+      const { question, answer } = this.state;
+      const { addCard, deck, goBack } = this.props;
+      if (question && answer) {
+        addCard(deck.title, {question, answer});
+        addCardToDeck(deck.title, {question, answer});
+        goBack();
+      }
     }
   }
 
@@ -37,8 +39,19 @@ class AddCard extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.title}>{deck.title}</Text>
-        <TextInput style={styles.question} underlineColorAndroid={'transparent'} editable={true} maxLength={100} placeholder="Enter the question here" onChangeText={(question) => this.setState({question})}/>
-        <TextInput style={styles.answer} underlineColorAndroid={'transparent'} editable={true} maxLength={200} multiline={true} placeholder="Enter the answer here" onChangeText={(answer) => this.setState({answer})}/>
+        <TextInput
+          style={styles.question}
+          underlineColorAndroid={'transparent'}
+          editable={true} maxLength={100}
+          placeholder="Enter the question here"
+          onChangeText={(question) => this.setState({question})}/>
+        <TextInput
+          style={styles.answer}
+          underlineColorAndroid={'transparent'}
+          editable={true} maxLength={200}
+          multiline={true}
+          placeholder="Enter the answer here"
+          onChangeText={(answer) => this.setState({answer})}/>
         <SubmitButton onSubmit={this.submit} submitBtnText={'Submit'}/>
       </View>
     )

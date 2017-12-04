@@ -27,7 +27,7 @@ class NewDeck extends Component {
     if (title) {
       newDeck(title);
       saveDeckTitle(title);
-      this.toDeckTab();
+      this.goToDeck(title);
     }
   }
 
@@ -36,16 +36,22 @@ class NewDeck extends Component {
     this.toHotoDeckTabme();
   }
 
-  toDeckTab() {
-    this.props.navigation.dispatch(NavigationActions.back({key: 'NewDeck'}));
-  }
+  goToDeck = (title) => {
+    this.props.navigation.navigate('DeckInfo', {deckTitle: title})
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <Text style={styles.deckTitle}>What is the title of your new deck?</Text>
-        <TextInput underlineColorAndroid={'transparent'} style={styles.deckInput} editable={true} maxLength={50} placeholder="Deck Title" onChangeText={(title) => this.setState({title})}/>
-        <SubmitButton onSubmit={this.submit} onCancel={this.reset} submitBtnText={'Submit'}/>
+        <TextInput
+          underlineColorAndroid={'transparent'}
+          style={styles.deckInput}
+          editable={true}
+          maxLength={50}
+          placeholder="Deck Title"
+          onChangeText={(title) => this.setState({title})}/>
+        <SubmitButton onSubmit={this.submit} onCancel={this.reset} submitBtnText={'Create Deck'}/>
       </View>
     )
   }
