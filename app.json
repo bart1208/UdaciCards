@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "sdkVersion": "23.0.0",
+    "orientation": "portrait",
+    "name": "UdaciCards",
+    "description": "The app will allow users to create different categories of flashcards called 'decks', add flashcards to those decks, then take quizzes on those decks.",
+    "slug": "udacicards",
+    "version": "1.0"
+  }
+}
